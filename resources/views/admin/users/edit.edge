@@ -1,0 +1,77 @@
+@layout('layouts/base')
+
+@set('title','Edit Data Warga')
+@set('page_heading','Edit Data Warga')
+@set('sub_heading','')
+
+@section('content')
+
+<section id="multiple-column-form">
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Edit Data Warga : Fakhri Adi Saputra</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="nama-column">Nama Lengkap</label>
+                                        <input type="text" id="nama-column" class="form-control" value="Fakhri Adi Saputra" name="nama">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="telp-column">Nomor Telepon</label>
+                                        <input type="number" id="telp-column" class="form-control" value="081219043780" name="telpon">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="nik-column">NIK</label>
+                                        <input type="number" id="nik-column" class="form-control" value="31700000000" name="nik">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="kk-floating">Nomor KK</label>
+                                        <input type="number" id="kk-floating" class="form-control" value="317509000000" name="kk">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">Tanggal Lahir</label>
+                                        <input type="date" id="company-column" class="form-control"  value="15/03/2001" name="tanggal-lahir">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">Email</label>
+                                        <input type="email" id="email-id-column" class="form-control" value="fakhri@gmail.com" name="email">
+                                    </div>
+                                </div>
+                                <div class="form-group col-12">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox5" class="form-check-input" checked="">
+                                            <label for="checkbox5">Remember Me</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@end
