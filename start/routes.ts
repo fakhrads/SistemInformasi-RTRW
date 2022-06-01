@@ -20,6 +20,7 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 import './routes/admin'
+import './routes/warga'
 
 
 Route.get('/', async ({ view }) => {

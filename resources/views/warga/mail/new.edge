@@ -1,0 +1,70 @@
+@layout('layouts/base')
+
+@set('title','Pengajuan Surat')
+@set('page_heading','Halaman Pengajuan Surat')
+@set('sub_heading','')
+
+@section('content')
+
+<section id="multiple-column-form">
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="alert alert-info">Data diri pemohon surat diambil dari data diri yang telah didaftarkan pada sistem</div>
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-md-6 mb-12">
+                                    <label for="basicSelect">Jenis Surat</label><br/>
+                                    <small for="basicSelect">Jenis surat yang dibuat</small>
+                                    <fieldset class="form-group">
+                                        <select class="form-select" id="basicSelect">
+                                            <option>Pilih jenis surat ...</option>
+                                            <option>Surat Keterangan</option>
+                                            <option>Surat Keterangan Pindah</option>
+                                            <option>Surat Keterangan Adat Istiadat</option>
+                                            <option>Surat Keterangan Domisili</option>
+                                            <option>Surat Keterangan Usaha</option>
+                                            <option>Surat Keterangan Lainnya</option>
+                                            <option>Surat Kelahiran</option>
+                                            <option>Surat Kematian</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-6 mb-12">
+                                    <label for="basicSelect">Penanda Tangan</label><br/>
+                                    <small for="basicSelect">Pihak yang bertanda tangan</small>
+                                    <fieldset class="form-group">
+                                        <select class="form-select" id="basicSelect">
+                                            <option>Pilih penanda tangan ...</option>
+                                            <option>Ketua RT & RW</option>
+                                            <option>Ketua RW</option>
+                                            <option>Ketua RT</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                
+                                <div class="col-md-12 col-12">
+                                    <label for="editor">Isi Keterangan Surat</label>
+                                    <div class="form-group">
+                                        <div id="editor">
+                                            <p>This is some sample content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@end
