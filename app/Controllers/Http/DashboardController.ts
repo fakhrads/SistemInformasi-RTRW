@@ -1,8 +1,9 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-export default class MailController {
-  public async index({ view }: HttpContextContract) {
-    return view.render('admin/mail/index')
+export default class DashboardController {
+  public async index({ view, auth }: HttpContextContract) {
+    await auth.use('web').authenticate()
+    return view.render('index')
   }
 
   public async create({}: HttpContextContract) {}

@@ -21,8 +21,12 @@
 import Route from '@ioc:Adonis/Core/Route'
 import './routes/admin'
 import './routes/warga'
+import './routes/auth'
 
-
-Route.get('/', async ({ view }) => {
-  return view.render('welcome')
+Route.get('/', async ({ view, auth }) => {
+  await auth.use('web').authenticate()
+  console.log(auth.use('web').user!.id)
+  //return view.render('welcome')
 })
+
+Route.get('/dashboard', 'DashboardController.index')

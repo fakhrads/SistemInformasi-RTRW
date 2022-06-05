@@ -13,22 +13,22 @@
                 <div class="card-content">
                     <div class="card-body">
                         <div class="alert alert-info">Data diri pemohon surat diambil dari data diri yang telah didaftarkan pada sistem</div>
-                        <form class="form">
+                        <form class="form" method="POST" action="/warga/mail/new">
                             <div class="row">
                                 <div class="col-md-6 mb-12">
                                     <label for="basicSelect">Jenis Surat</label><br/>
                                     <small for="basicSelect">Jenis surat yang dibuat</small>
                                     <fieldset class="form-group">
-                                        <select class="form-select" id="basicSelect">
+                                        <select name="jenis_surat" class="form-select" id="basicSelect">
                                             <option>Pilih jenis surat ...</option>
-                                            <option>Surat Keterangan</option>
-                                            <option>Surat Keterangan Pindah</option>
-                                            <option>Surat Keterangan Adat Istiadat</option>
-                                            <option>Surat Keterangan Domisili</option>
-                                            <option>Surat Keterangan Usaha</option>
-                                            <option>Surat Keterangan Lainnya</option>
-                                            <option>Surat Kelahiran</option>
-                                            <option>Surat Kematian</option>
+                                            <option value="Surat Keterangan">Surat Keterangan</option>
+                                            <option value="Surat Keterangan Pindah" >Surat Keterangan Pindah</option>
+                                            <option value="Surat Keterangan Adat Istiadat">Surat Keterangan Adat Istiadat</option>
+                                            <option value="Surat Keterangan Domisili">Surat Keterangan Domisili</option>
+                                            <option value="Surat Keterangan Usaha">Surat Keterangan Usaha</option>
+                                            <option value="Surat Keterangan Lainnya">Surat Keterangan Lainnya</option>
+                                            <option value="Surat Kelahiran">Surat Kelahiran</option>
+                                            <option value="Surat Kematian">Surat Kematian</option>
                                         </select>
                                     </fieldset>
                                 </div>
@@ -37,11 +37,11 @@
                                     <label for="basicSelect">Penanda Tangan</label><br/>
                                     <small for="basicSelect">Pihak yang bertanda tangan</small>
                                     <fieldset class="form-group">
-                                        <select class="form-select" id="basicSelect">
+                                        <select name="penandatangan" class="form-select" id="basicSelect">
                                             <option>Pilih penanda tangan ...</option>
-                                            <option>Ketua RT & RW</option>
-                                            <option>Ketua RW</option>
-                                            <option>Ketua RT</option>
+                                            <option value="Ketua RT & RW">Ketua RT & RW</option>
+                                            <option value="Ketua RW">Ketua RW</option>
+                                            <option value="Ketua RT">Ketua RT</option>
                                         </select>
                                     </fieldset>
                                 </div>
@@ -49,9 +49,9 @@
                                 <div class="col-md-12 col-12">
                                     <label for="editor">Isi Keterangan Surat</label>
                                     <div class="form-group">
-                                        <div id="editor">
+                                        <textarea name="keterangan" id="editor">
                                             <p>This is some sample content.</p>
-                                        </div>
+                                        </textarea>
                                     </div>
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">

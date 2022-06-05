@@ -34,6 +34,9 @@ export default class User extends BaseModel {
   public nik: number
 
   @column()
+  public telpon: number
+
+  @column()
   public alamat: string
 
   @column({ serializeAs: null })
