@@ -23,10 +23,10 @@ import './routes/admin'
 import './routes/warga'
 import './routes/auth'
 
-Route.get('/', async ({ view, auth }) => {
+Route.get('/', async ({ auth, response }) => {
   await auth.use('web').authenticate()
   console.log(auth.use('web').user!.id)
-  //return view.render('welcome')
+  response.redirect().toRoute('/dashboard')
 })
 
 Route.get('/dashboard', 'DashboardController.index')

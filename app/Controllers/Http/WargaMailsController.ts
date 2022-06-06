@@ -38,7 +38,13 @@ export default class WargaMailsController {
     }
   }
 
-  public async show({}: HttpContextContract) {}
+  public async show({ view, auth, request }: HttpContextContract) {
+    await auth.use('web').authenticate()
+    const data = await Surat.findOrFail(request.param('id'))
+
+    return view. render('warga/mail/edit', {data:data})
+
+  }
 
   public async edit({}: HttpContextContract) {}
 

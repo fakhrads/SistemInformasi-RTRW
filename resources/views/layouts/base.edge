@@ -104,6 +104,18 @@
                     <span>Data Warga</span>
                 </a>
             </li>
+
+            <li
+                @if( request.url() == '/admin/mail') 
+                    class="sidebar-item active">
+                @else 
+                    class="sidebar-item ">
+                @end
+                <a href="/admin/mail" class='sidebar-link'>
+                    <i class="bi bi-envelope"></i>
+                    <span>Data Pengajuan Surat</span>
+                </a>
+            </li>
             
             <li
                 class="sidebar-item  has-sub">

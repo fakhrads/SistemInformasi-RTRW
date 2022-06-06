@@ -11,20 +11,21 @@
             <table class="table " id="table1">
                 <thead>
                     <tr>
-                        <th>Nomor Surat</th>
+                        <th>ID Surat</th>
                         <th>Jenis Surat</th>
                         <th>Tanggal Pengajuan</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @each(item in data)
                     <tr>
-                        <td>HJ/INV/2020</td>
-                        <td>Surat Kelahiran</td>
-                        <td>20/03/2001</td>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.jenis_surat }}</td>
+                        <td>{{ item.createdAt.toFormat('d/M/yyyy') }}</td>
                         <td>
                             <div class="btn-group mb-1 space-between">
-                                <a href="/admin/users/edit" class="btn icon btn-primary">
+                                <a href="/admin/mail/edit/{{ item.id }}" class="btn icon btn-primary">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
                                         <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
                                         <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
@@ -33,6 +34,7 @@
                             </div>
                         </td>
                     </tr>
+                    @end
                 </tbody>
             </table>
         </div>

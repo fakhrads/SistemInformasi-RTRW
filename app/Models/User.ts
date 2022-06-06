@@ -22,6 +22,12 @@ export default class User extends BaseModel {
   public pendidikan: string
 
   @column()
+  public level: string
+
+  @column()
+  public pekerjaan: string
+
+  @column()
   public agama: string
 
   @column()

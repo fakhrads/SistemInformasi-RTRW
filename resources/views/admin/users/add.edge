@@ -11,78 +11,105 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Edit Data Warga : Fakhri Adi Saputra</h4>
+                    <h4 class="card-title">Tambah Data Warga</h4>
+                    <small class="card-title">Isikan data dengan benar sesuai identitas</small>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form">
+                        <form class="form" method="POST" action="/admin/users/add">
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="nama-column">Nama Lengkap</label>
-                                        <input type="text" id="nama-column" class="form-control" placeholder="Fakhri Adi Saputra" name="nama">
+                                        <input type="text" id="nama-column" class="form-control" placeholder="Fakhri Adi Saputra" name="nama" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="telp-column">Nomor Telepon</label>
-                                        <input type="number" id="telp-column" class="form-control" placeholder="081219043780" name="telpon">
+                                        <input type="number" id="telp-column" class="form-control" placeholder="081219043780" name="telpon" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="nik-column">NIK /KTP</label>
-                                        <input type="number" id="nik-column" class="form-control" placeholder="31700000000" name="nik">
+                                        <input type="number" id="nik-column" class="form-control" placeholder="31700000000" name="nik" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="kk-floating">Agama</label>
-                                        <input type="text" id="kk-floating" class="form-control" placeholder="Islam" name="agama">
+                                        <label for="company-column">Agama</label>
+                                        <select type="text" id="company-column" class="form-select"  name="agama">
+                                            <option> Pilih agama ...</option>
+                                            <option value="Islam">Islam</option>
+                                            <option value="Kristen">Kristen</option>
+                                            <option value="Hindu">Hindu</option>
+                                            <option value="Buddha">Buddha</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-column">Tempat Lahir</label>
-                                        <input type="text" id="company-column" class="form-control"  placeholder="Jakarta" name="tempat-lahir">
+                                        <input type="text" id="company-column" class="form-control"  placeholder="Jakarta" name="tempat_lahir" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-column">Tanggal Lahir</label>
-                                        <input type="date" id="company-column" class="form-control"  placeholder="15/03/2001" name="tanggal-lahir">
+                                        <input type="date" id="company-column" class="form-control"  placeholder="15/03/2001" name="tanggal_lahir" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-column">Pekerjaan</label>
-                                        <input type="text" id="company-column" class="form-control"  placeholder="Swasta" name="pekerjaan">
+                                        <input type="text" id="company-column" class="form-control"  placeholder="Swasta" name="pekerjaan" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-column">Pendidikan</label>
-                                        <input type="text" id="company-column" class="form-control"  placeholder="S1 Sederajat" name="pendidikan">
+                                        <input type="text" id="company-column" class="form-control"  placeholder="S1 Sederajat" name="pendidikan" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-column">Kewarganegaraan</label>
-                                        <input type="text" id="company-column" class="form-control"  placeholder="WNI" name="kewarganegaraan">
+                                        <select type="text" id="company-column" class="form-select"  name="kewarganegaraan">
+                                            <option > Pilih kewarganegaraan ...</option>
+                                            <option value="WNI">WNI</option>
+                                            <option value="WNA">WNA</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="email-id-column">Email</label>
-                                        <input type="email" id="email-id-column" class="form-control" placeholder="fakhri@gmail.com" name="email">
+                                        <input type="email" id="email-id-column" class="form-control" placeholder="fakhri@gmail.com" name="email" required>
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-12">
+                                <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="editor">Alamat</label>
-                                        <div id="editor">
-                                            <p>This is some sample content.</p>
-                                        </div>
+                                        <label for="company-column">Status Pernikahan</label>
+                                        <select type="text" id="company-column" class="form-select"  name="status_pernikahan" required>
+                                            <option> Pilih status pernikahan ... </option>
+                                            <option value="Lajang">Lajang</option>
+                                            <option value="Kawin">Kawin</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="editor">Alamat</label><br>
+                                        <textarea rows="4" name="alamat" id="editor" required>
+                                            
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">Password</label>
+                                        <input type="password" id="email-id-column" class="form-control" placeholder="****" name="password" required>
                                     </div>
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">

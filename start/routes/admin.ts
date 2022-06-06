@@ -3,8 +3,14 @@ import Route from '@ioc:Adonis/Core/Route'
 Route
   .group(() => {
     Route.get('/users', 'UsersController.index')
-    Route.get('/users/edit', 'UsersController.edit')
+    Route.get('/users/edit/:id', 'UsersController.edit').middleware('is_admin:web,api')
+    Route.post('/users/edit', 'UsersController.update').middleware('is_admin:web,api')
     Route.get('/users/add', 'UsersController.create')
-    Route.get('/mail', '')
+    Route.post('/users/add', 'UsersController.store')
+    Route.post('/users/delete', 'UsersController.destroy')
+    Route.get('/mail', 'MailController.index')
+    Route.get('/mail/edit/:id', 'MailController.edit')
   })
+  
   .prefix('/admin')
+  .middleware('auth:web,api')

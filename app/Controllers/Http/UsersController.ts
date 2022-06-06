@@ -5,21 +5,26 @@ import User from 'App/Models/User'
 export default class UsersController {
   public async index({ view, auth }: HttpContextContract) {
     await auth.use('web').authenticate()
-    const data = User.all()
+    const data = await User.all()
+    console.log(data)
     return view.render('admin/users/index', { data: data })
   }
 
-  public async create({ view }: HttpContextContract) {
+  public async create({ view, auth }: HttpContextContract) {
+    await auth.use('web').authenticate()
     return view.render('admin/users/add')
   }
 
-  public async store({ request }: HttpContextContract) {
+  public async store({ request, auth, response }: HttpContextContract) {
+    await auth.use('web').authenticate()
+    
     const nama = request.input('nama')
     const email = request.input('email')
     const password = request.input('password')
     const tempat_lahir = request.input('tempat_lahir')
     const tanggal_lahir = request.input('tanggal_lahir')
     const pendidikan = request.input('pendidikan')
+    const pekerjaan = request.input('pekerjaan')
     const agama = request.input('agama')
     const status_pernikahan = request.input('status_pernikahan')
     const kewarganegaraan = request.input('kewarganegaraan')
@@ -27,20 +32,26 @@ export default class UsersController {
     const alamat = request.input('alamat')
     const telpon = request.input('telpon')
 
-    await User.create({
-      nama: nama,
-      email: email,
-      telpon: telpon,
-      tempat_lahir: tempat_lahir,
-      password: password,
-      tanggal_lahir: tanggal_lahir,
-      pendidikan: pendidikan,
-      agama: agama,
-      status_pernikahan: status_pernikahan,
-      kewarganegaraan: kewarganegaraan,
-      nik: nik,
-      alamat: alamat
-    })
+    try {
+      await User.create({
+        nama: nama,
+        email: email,
+        telpon: telpon,
+        tempat_lahir: tempat_lahir,
+        password: password,
+        tanggal_lahir: tanggal_lahir,
+        pendidikan: pendidikan,
+        agama: agama,
+        status_pernikahan: status_pernikahan,
+        kewarganegaraan: kewarganegaraan,
+        nik: nik,
+        alamat: alamat,
+        pekerjaan: pekerjaan
+      })
+    } catch (error) {
+      return response.badRequest('Something bad happened')
+    }
+    
   }
 
   public async registerPost({ request, response }: HttpContextContract ) {
@@ -72,8 +83,13 @@ export default class UsersController {
 
   public async show({}: HttpContextContract) {}
 
-  public async edit({ view }: HttpContextContract) {
-    return view.render('admin/users/edit')
+  public async edit({ view, request, auth }: HttpContextContract) {
+    await auth.use('web').authenticate()
+
+    const uid = request.param('id')
+    const users = await User.findOrFail(uid)
+
+    return view.render('admin/users/edit', { data: users })
   }
 
   public async loginPost({ request, auth, response}: HttpContextContract) {
@@ -98,7 +114,58 @@ export default class UsersController {
       await response.redirect().toRoute('/dashboard')
   }
 
-  public async update({}: HttpContextContract) {}
+  public async update({ request, auth, response  }: HttpContextContract) {
+    await auth.use('web').authenticate()
+    
+    const uid = request.input('id')
 
-  public async destroy({}: HttpContextContract) {}
+    try {
+      const user = await User.findOrFail(uid)
+
+      const nama = request.input('nama')
+      const email = request.input('email')
+      const password = request.input('password')
+      const tempat_lahir = request.input('tempat_lahir')
+      const tanggal_lahir = request.input('tanggal_lahir')
+      const pendidikan = request.input('pendidikan')
+      const agama = request.input('agama')
+      const status_pernikahan = request.input('status_pernikahan')
+      const kewarganegaraan = request.input('kewarganegaraan')
+      const nik = request.input('nik')
+      const alamat = request.input('alamat')
+      const telpon = request.input('telpon')
+      const pekerjaan = request.input('pekerjaan')
+
+      user.nama = nama
+      user.email = email
+      user.password = password
+      user.tempat_lahir = tempat_lahir
+      user.tanggal_lahir = tanggal_lahir
+      user.pendidikan = pendidikan
+      user.agama = agama
+      user.status_pernikahan = status_pernikahan
+      user.kewarganegaraan = kewarganegaraan
+      user.nik = nik
+      user.alamat = alamat
+      user.telpon = telpon
+      user.pekerjaan = pekerjaan
+
+      await user.save()
+      response.redirect().back()
+    } catch (error) {
+      response.badRequest('Something bad happened')
+    }
+  }
+
+  public async destroy({ request, auth, response }: HttpContextContract) {
+    await auth.use('web').authenticate()
+
+    const id = request.input('uid')
+
+    const user = await User.findOrFail(id)
+
+    await user.delete()
+
+    response.redirect().back()
+  }
 }
