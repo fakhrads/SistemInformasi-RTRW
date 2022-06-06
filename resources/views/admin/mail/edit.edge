@@ -13,50 +13,80 @@
                 <div class="card-content">
                     <div class="card-body">
                         <div class="alert alert-info">Data diri pemohon surat diambil dari data diri yang telah didaftarkan pada sistem</div>
-                        <form class="form" method="POST" action="/warga/mail/new">
+                        <form class="form" method="POST" action="/admin/mail/edit" enctype="multipart/form-data">
                             <div class="row">
+                                <input type="hidden" name="id_surat" value="{{ data.id }}">
                                 <div class="col-md-6 mb-12">
-                                    <label>Jenis Surat</label>
-                                    <p> ASDASDAS </p>
+                                    <label><b>Nama Pengaju</b></label>
+                                    <p> {{ users.nama }} </p>
                                 </div>
                                 <div class="col-md-6 mb-12">
-                                    <label for="basicSelect">Jenis Surat</label><br/>
-                                    <small for="basicSelect">Jenis surat yang dibuat</small>
+                                    <label><b>Tempat, Tanggal Lahir</b></label>
+                                    <p> {{ users.tempat_lahir }}, {{ users.tanggal_lahir }} </p>
+                                </div>
+                                <div class="col-md-6 mb-12">
+                                    <label><b>NIK</b></label>
+                                    <p> {{ users.nik }} </p>
+                                </div>
+                                <div class="col-md-6 mb-12">
+                                    <label><b>Agama</b></label>
+                                    <p> {{ users.agama }} </p>
+                                </div>
+                                <div class="col-md-6 mb-12">
+                                    <label><b>Kewarganegaraan</b></label>
+                                    <p> {{ users.kewarganegaraan }} </p>
+                                </div>
+                                <div class="col-md-6 mb-12">
+                                    <label><b>Status Pernikahan</b></label>
+                                    <p> {{ users.status_pernikahan }} </p>
+                                </div>
+                                <div class="col-md-6 mb-12">
+                                    <label><b>Pendidikan</b></label>
+                                    <p> {{ users.pendidikan }} </p>
+                                </div>
+                                <div class="col-md-6 mb-12">
+                                    <label><b>Pendidikan</b></label>
+                                    <p> {{ users.pekerjaan }} </p>
+                                </div>
+
+                                <div class="divider"></div>
+
+                                <div class="col-md-6 mb-12">
+                                    <label><b>Jenis Surat</b></label>
+                                    <p> {{ data.jenis_surat }} </p>
+                                </div>
+                                <div class="col-md-6 mb-12">
+                                    <label><b>Penandatangan</b></label>
+                                    <p> {{ data.penandatangan}} </p>
+                                </div>
+                                <div class="col-md-12 mb-12">
+                                    <label><b>Keterangan Surat</b></label>
+                                    <div class="alert alert-primary"> {{{ data.keterangan }}} </div>
+                                </div>
+                                <div class="col-md-4 mb-12">
+                                    <label for="basicSelect">Nomor Surat</label><br/>
+                                    <small for="basicSelect">Masukkan nomor surat yang telah dibuat</small>
+                                    <input name="nomor_surat" class="form-control" id="basicSelect" placeholder="SKL/2022/0506" required>
+                                            
+                                </div>
+
+                                <div class="col-md-4 mb-12">
+                                    <label for="basicSelect">Status Surat</label><br/>
+                                    <small for="basicSelect">Ubah status surat sesuai keadaan</small>
                                     <fieldset class="form-group">
-                                        <select name="jenis_surat" class="form-select" id="basicSelect">
-                                            <option>Pilih jenis surat ...</option>
-                                            <option value="Surat Keterangan">Surat Keterangan</option>
-                                            <option value="Surat Keterangan Pindah" >Surat Keterangan Pindah</option>
-                                            <option value="Surat Keterangan Adat Istiadat">Surat Keterangan Adat Istiadat</option>
-                                            <option value="Surat Keterangan Domisili">Surat Keterangan Domisili</option>
-                                            <option value="Surat Keterangan Usaha">Surat Keterangan Usaha</option>
-                                            <option value="Surat Keterangan Lainnya">Surat Keterangan Lainnya</option>
-                                            <option value="Surat Kelahiran">Surat Kelahiran</option>
-                                            <option value="Surat Kematian">Surat Kematian</option>
+                                        <select name="status" class="form-select" id="basicSelect">
+                                            <option value='{{ data.status }}'>{{ data.status }}</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="Waiting">Waiting</option>
+                                            <option value="Approved">Approved</option>
                                         </select>
                                     </fieldset>
                                 </div>
 
-                                <div class="col-md-6 mb-12">
-                                    <label for="basicSelect">Penanda Tangan</label><br/>
-                                    <small for="basicSelect">Pihak yang bertanda tangan</small>
-                                    <fieldset class="form-group">
-                                        <select name="penandatangan" class="form-select" id="basicSelect">
-                                            <option>Pilih penanda tangan ...</option>
-                                            <option value="Ketua RT & RW">Ketua RT & RW</option>
-                                            <option value="Ketua RW">Ketua RW</option>
-                                            <option value="Ketua RT">Ketua RT</option>
-                                        </select>
-                                    </fieldset>
-                                </div>
-                                
-                                <div class="col-md-12 col-12">
-                                    <label for="editor">Isi Keterangan Surat</label>
-                                    <div class="form-group">
-                                        <textarea name="keterangan" id="editor">
-                                            <p>This is some sample content.</p>
-                                        </textarea>
-                                    </div>
+                                <div class="col-md-4 mb-12">
+                                    <label for="formFile" >File Surat</label><br/>
+                                    <small for="formFile" >Upload file surat yang telah dibuat</small>
+                                    <input name="file_surat" class="form-control" type="file" id="formFile">
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>

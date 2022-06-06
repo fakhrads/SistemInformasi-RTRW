@@ -10,7 +10,8 @@ Route
     Route.post('/users/delete', 'UsersController.destroy')
     Route.get('/mail', 'MailController.index')
     Route.get('/mail/edit/:id', 'MailController.edit')
+    Route.post('/mail/edit', 'MailController.update')
   })
-  
+
   .prefix('/admin')
   .middleware('auth:web,api')

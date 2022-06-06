@@ -9,6 +9,9 @@ export default class Surat extends BaseModel {
   public id_pembuat: number
 
   @column()
+  public nomor_surat: string
+
+  @column()
   public jenis_surat: string
 
   @column()
