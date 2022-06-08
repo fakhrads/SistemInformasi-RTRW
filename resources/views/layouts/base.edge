@@ -55,7 +55,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-
+            @if( user.level == "Warga") 
             <li class="sidebar-title">Menu Warga</li>
             
             <li
@@ -89,7 +89,9 @@
                     <span>Kalkulator Iuran/Donasi</span>
                 </a>
             </li>
+            @end
             
+            @if( user.level == "Admin" OR user.level == "RT") 
             <li class="sidebar-title">Menu Admin</li>
 
             
@@ -141,6 +143,7 @@
                     </li>
                 </ul>
             </li>
+            @end
             
         </ul>
     </div>
