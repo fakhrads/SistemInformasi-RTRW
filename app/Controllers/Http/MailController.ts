@@ -3,6 +3,9 @@ import Surat from 'App/Models/Surat'
 import User from 'App/Models/User'
 import Application from '@ioc:Adonis/Core/Application'
 import Drive from '@ioc:Adonis/Core/Drive'
+import fs from 'fs';
+import Docxtemplater  from 'docxtemplater';
+import JSZip  from 'jszip';
 
 export default class MailController {
   public async index({ view, auth }: HttpContextContract) {
@@ -27,6 +30,24 @@ export default class MailController {
     const users = await User.findOrFail(data.id_pembuat)
 
     return view.render('admin/mail/edit', { data:data, users:users })
+  }
+
+  public async createSKD({ auth, response }: HttpContextContract) {
+    await auth.use('web').authenticate()
+
+    const file_surat = fs
+      .readFileSync(__dirname+"../../../template_surat/skd.docx","binary");
+
+    const zip = new JSZip(file_surat);
+    const doc = new Docxtemplater().loadZip(zip);  
+
+    
+
+    doc.setData({
+      "firstname":"John",
+      "lastname":"Doe"
+  });
+
   }
 
   public async update({ auth, request, response }: HttpContextContract) {
