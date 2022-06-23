@@ -42,8 +42,9 @@ export default class MailController {
     const d = new Date();
 
     doc.render({
+      nomor_surat: data_surat?.id,
       tahun: d.getFullYear(),
-      kode_surat: data_surat?.kode_jenis,
+      jenis_surat: data_surat?.kode_jenis,
       nama: data_user?.nama,
       jenis_kelamin: "Laki Laki",
       status_perkawinan: data_user?.status_pernikahan,

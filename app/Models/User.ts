@@ -38,6 +38,9 @@ export default class User extends BaseModel {
 
   @column()
   public nik: number
+  
+  @column()
+  public kk: number
 
   @column()
   public telpon: number

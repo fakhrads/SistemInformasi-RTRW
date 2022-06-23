@@ -18,21 +18,33 @@
     
                 <form method="POST" action="/register">
                     <div class="form-group position-relative has-icon-left mb-4">
-                        <input type="text" name="nama" class="form-control form-control-xl" placeholder="Nama lengkap">
+                        <input type="text" name="nama" class="form-control form-control-xl" placeholder="Nama lengkap" required>
                         <div class="form-control-icon">
                             <i class="bi bi-person"></i>
                         </div>
                     </div>
                     <div class="form-group position-relative has-icon-left mb-4">
-                        <input type="text" name="email" class="form-control form-control-xl" placeholder="Email">
+                        <input type="text" name="email" class="form-control form-control-xl" placeholder="Email" required>
                         <div class="form-control-icon">
                             <i class="bi bi-envelope"></i>
                         </div>
                     </div>
                     <div class="form-group position-relative has-icon-left mb-4">
-                        <input type="text" name="telpon" class="form-control form-control-xl" placeholder="Nomor Telpon Anda">
+                        <input type="text" name="telpon" class="form-control form-control-xl" placeholder="Nomor Telpon Anda" required>
                         <div class="form-control-icon">
                             <i class="bi bi-phone"></i>
+                        </div>
+                    </div>
+                    <div class="form-group position-relative has-icon-left mb-4">
+                        <input type="text" name="kk" class="form-control form-control-xl" placeholder="Nomor KK anda" required>
+                        <div class="form-control-icon">
+                            <i class="bi bi-credit-card-2-front"></i>
+                        </div>
+                    </div>
+                    <div class="form-group position-relative has-icon-left mb-4">
+                        <input type="text" name="nik" class="form-control form-control-xl" placeholder="Nomor nik anda" required>
+                        <div class="form-control-icon">
+                            <i class="bi bi-credit-card-2-front"></i>
                         </div>
                     </div>
                     <div class="form-group position-relative has-icon-left mb-4">
@@ -41,17 +53,17 @@
                             <option value="WNA">WNA</option>
                         </select>
                         <div class="form-control-icon">
-                            <i class="bi bi-phone"></i>
+                            <i class="bi bi-globe"></i>
                         </div>
                     </div>
                     <div class="form-group position-relative has-icon-left mb-4">
-                        <input type="password" name="password" class="form-control form-control-xl" placeholder="Password">
+                        <input type="password" name="password" class="form-control form-control-xl" placeholder="Password" required>
                         <div class="form-control-icon">
                             <i class="bi bi-shield-lock"></i>
                         </div>
                     </div>
                     <div class="form-group position-relative has-icon-left mb-4">
-                        <input type="password" name="confirm-password" class="form-control form-control-xl" placeholder="Confirm Password">
+                        <input type="password" name="confirm-password" class="form-control form-control-xl" placeholder="Confirm Password" required>
                         <div class="form-control-icon">
                             <i class="bi bi-shield-lock"></i>
                         </div>

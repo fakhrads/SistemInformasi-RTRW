@@ -29,6 +29,7 @@ export default class UsersController {
     const status_pernikahan = request.input('status_pernikahan')
     const kewarganegaraan = request.input('kewarganegaraan')
     const nik = request.input('nik')
+    const kk = request.input('kk')
     const alamat = request.input('alamat')
     const telpon = request.input('telpon')
 
@@ -45,6 +46,7 @@ export default class UsersController {
         status_pernikahan: status_pernikahan,
         kewarganegaraan: kewarganegaraan,
         nik: nik,
+        kk: kk,
         alamat: alamat,
         pekerjaan: pekerjaan
       })
@@ -58,6 +60,8 @@ export default class UsersController {
     const nama = request.input('nama')
     const email = request.input('email')
     const telpon = request.input('telpon')
+    const nik = request.input('nik')
+    const kk = request.input('kk')
     const password = request.input('password')
     const kewarganegaraan = request.input('kewarganegaraan')
     console.log(request.input('password'))
@@ -66,6 +70,8 @@ export default class UsersController {
       nama: nama,
       email: email,
       telpon: telpon,
+      nik: nik,
+      kk: kk,
       password: password,
       kewarganegaraan: kewarganegaraan,
     })
