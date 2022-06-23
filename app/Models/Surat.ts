@@ -12,7 +12,7 @@ export default class Surat extends BaseModel {
   public nomor_surat: string
 
   @column()
-  public jenis_surat: string
+  public kode_jenis: string
 
   @column()
   public penandatangan: string

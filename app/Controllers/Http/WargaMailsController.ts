@@ -19,14 +19,14 @@ export default class WargaMailsController {
 
   public async store({ auth, request, response }: HttpContextContract) {
     await auth.use('web').authenticate()
-    const jenis_surat = request.input('jenis_surat')
+    const kode_jenis = request.input('jenis_surat')
     const penandatangan = request.input('penandatangan')
     const keterangan = request.input('keterangan')
 
     try {
       await Surat.create({
         id_pembuat: auth.use('web').user!.id,
-        jenis_surat: jenis_surat,
+        kode_jenis: kode_jenis,
         penandatangan: penandatangan,
         keterangan: keterangan
       })

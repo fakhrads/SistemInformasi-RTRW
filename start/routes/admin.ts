@@ -11,6 +11,7 @@ Route
     Route.get('/mail', 'MailController.index')
     Route.get('/mail/edit/:id', 'MailController.edit')
     Route.post('/mail/edit', 'MailController.update')
+    Route.post('/mail/approve', 'MailController.approve')
   })
 
   .prefix('/admin')

@@ -4,8 +4,21 @@ import User from 'App/Models/User'
 import Application from '@ioc:Adonis/Core/Application'
 import Drive from '@ioc:Adonis/Core/Drive'
 import fs from 'fs';
+import path from 'path';
 import Docxtemplater  from 'docxtemplater';
-import JSZip  from 'jszip';
+import PizZip  from 'pizzip';
+
+// Load the docx file as binary content
+const content = fs.readFileSync(
+  path.resolve("template_surat/", "sk.docx"),
+  "binary"
+);
+
+const zip = new PizZip(content);
+const doc = new Docxtemplater(zip, {
+  paragraphLoop: true,
+  linebreaks: true,
+});
 
 export default class MailController {
   public async index({ view, auth }: HttpContextContract) {
@@ -20,7 +33,38 @@ export default class MailController {
 
   public async store({}: HttpContextContract) {}
 
-  public async show({}: HttpContextContract) {}
+  public async approve({auth, response, request}: HttpContextContract) {
+    await auth.use('web').authenticate()
+
+    const id = request.input('id')
+    const data_surat = await Surat.find(id)
+    const data_user = await User.find(data_surat?.id)
+    const d = new Date();
+
+    doc.render({
+      tahun: d.getFullYear(),
+      kode_surat: data_surat?.kode_jenis,
+      nama: data_user?.nama,
+      jenis_kelamin: "Laki Laki",
+      status_perkawinan: data_user?.status_pernikahan,
+      agama: data_user?.agama,
+      ktp: data_user?.nik,
+      kk: "0123091250783011390",
+      alamat: data_user?.alamat,
+      keterangan: data_surat?.keterangan,
+    });
+
+    const buf = doc.getZip().generate({
+      type: "nodebuffer",
+      // compression: DEFLATE adds a compression step.
+      // For a 50MB output document, expect 500ms additional CPU time
+      compression: "DEFLATE",
+    });
+
+    fs.writeFileSync(path.resolve("public/", "output.docx"), buf);
+
+    response.redirect().back()
+  }
 
   public async edit({ view, auth, request }: HttpContextContract) {
     await auth.use('web').authenticate()
@@ -32,23 +76,6 @@ export default class MailController {
     return view.render('admin/mail/edit', { data:data, users:users })
   }
 
-  public async createSKD({ auth, response }: HttpContextContract) {
-    await auth.use('web').authenticate()
-
-    const file_surat = fs
-      .readFileSync(__dirname+"../../../template_surat/skd.docx","binary");
-
-    const zip = new JSZip(file_surat);
-    const doc = new Docxtemplater().loadZip(zip);  
-
-    
-
-    doc.setData({
-      "firstname":"John",
-      "lastname":"Doe"
-  });
-
-  }
 
   public async update({ auth, request, response }: HttpContextContract) {
     await auth.use('web').authenticate()

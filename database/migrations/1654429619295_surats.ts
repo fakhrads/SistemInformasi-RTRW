@@ -11,7 +11,6 @@ export default class extends BaseSchema {
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
       table.bigInteger('id_pembuat').notNullable()
-      table.string('jenis_surat').notNullable()
       table.string('penandatangan').notNullable()
       table.string('keterangan').notNullable()
       table.string('status').defaultTo('Waiting').notNullable()
