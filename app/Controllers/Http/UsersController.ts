@@ -87,7 +87,6 @@ export default class UsersController {
     return view.render('auth/login')
   }
 
-  public async show({}: HttpContextContract) {}
 
   public async edit({ view, request, auth }: HttpContextContract) {
     await auth.use('web').authenticate()
@@ -173,5 +172,14 @@ export default class UsersController {
     await user.delete()
 
     response.redirect().back()
+  }
+
+  public async show({ auth, view }: HttpContextContract) {
+    await auth.use("web").authenticate()
+
+    const id = auth.use('web').user!.id
+    const dad =  await User.findOrFail(id)
+
+    return view.render('warga/user/edit', { data: dad })
   }
 }
