@@ -40,6 +40,8 @@ export default class MailController {
     const data_surat = await Surat.find(id)
     const data_user = await User.find(data_surat?.id)
     const d = new Date();
+    const formatYmd = d.toISOString().slice(0, 10);
+    const nama_surat = "SK_" + formatYmd + "-" + data_user?.nama + ".docx"
 
     doc.render({
       nomor_surat: data_surat?.id,
@@ -50,7 +52,7 @@ export default class MailController {
       status_perkawinan: data_user?.status_pernikahan,
       agama: data_user?.agama,
       ktp: data_user?.nik,
-      kk: "0123091250783011390",
+      kk: data_user?.kk,
       alamat: data_user?.alamat,
       keterangan: data_surat?.keterangan,
     });
@@ -62,7 +64,13 @@ export default class MailController {
       compression: "DEFLATE",
     });
 
-    fs.writeFileSync(path.resolve("public/", "output.docx"), buf);
+
+    fs.writeFileSync(path.resolve("public/", nama_surat), buf);
+    
+    const surat = await Surat.findOrFail(id)
+    surat.status = "Approved"
+    surat.path_download = "/" + nama_surat
+    surat.save()
 
     response.redirect().back()
   }

@@ -129,7 +129,6 @@ export default class UsersController {
 
       const nama = request.input('nama')
       const email = request.input('email')
-      const password = request.input('password')
       const tempat_lahir = request.input('tempat_lahir')
       const tanggal_lahir = request.input('tanggal_lahir')
       const pendidikan = request.input('pendidikan')
@@ -143,7 +142,6 @@ export default class UsersController {
 
       user.nama = nama
       user.email = email
-      user.password = password
       user.tempat_lahir = tempat_lahir
       user.tanggal_lahir = tanggal_lahir
       user.pendidikan = pendidikan

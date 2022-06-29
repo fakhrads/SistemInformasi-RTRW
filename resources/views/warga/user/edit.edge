@@ -57,7 +57,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-column">Tanggal Lahir</label>
-                                        <input type="date" id="company-column" class="form-control"  value="{{ data.tanggal_lahir }}" name="tanggal_lahir">
+                                        <input type="date" id="dataPicker" class="form-control"  name="tanggal_lahir">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -125,4 +125,11 @@
     </div>
 </section>
 
+<script>
+    var CurrentDate = "{{ data.tanggal_lahir }}";
+    var date_new = new Date(CurrentDate);
+    console.log(date_new.toISOString().slice(0, 10))
+    var jojo = date_new.getFullYear().toString() + "/" + date_new.getMonth().toString() + "/" + date_new.getDay().toString() 
+    document.getElementById('dataPicker').value = date_new.toISOString().slice(0, 10);
+</script>
 @end
