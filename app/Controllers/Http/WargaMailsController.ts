@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Surat from 'App/Models/Surat'
+import User from 'App/Models/User'
 
 export default class WargaMailsController {
   public async index({ view, auth }: HttpContextContract) {
@@ -14,7 +15,9 @@ export default class WargaMailsController {
 
   public async create({ view, auth }: HttpContextContract) {
     await auth.use('web').authenticate()
-    return view.render('warga/mail/new')
+    const id = auth.use('web').user!.id
+    const data = await User.findOrFail(id)
+    return view.render('warga/mail/new', { data: data})
   }
 
   public async store({ auth, request, response }: HttpContextContract) {
