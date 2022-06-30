@@ -62,35 +62,7 @@
                                     <label><b>Keterangan Surat</b></label>
                                     <div class="alert alert-primary"> {{{ data.keterangan }}} </div>
                                 </div>
-                                <div class="col-md-4 mb-12">
-                                    <label for="basicSelect">Nomor Surat</label><br/>
-                                    <small for="basicSelect">Masukkan nomor surat yang telah dibuat</small>
-                                    <input name="nomor_surat" class="form-control" id="basicSelect" placeholder="SKL/2022/0506" required>
-                                            
-                                </div>
-
-                                <div class="col-md-4 mb-12">
-                                    <label for="basicSelect">Status Surat</label><br/>
-                                    <small for="basicSelect">Ubah status surat sesuai keadaan</small>
-                                    <fieldset class="form-group">
-                                        <select name="status" class="form-select" id="basicSelect">
-                                            <option value='{{ data.status }}'>{{ data.status }}</option>
-                                            <option value="Pending">Pending</option>
-                                            <option value="Waiting">Waiting</option>
-                                            <option value="Approved">Approved</option>
-                                        </select>
-                                    </fieldset>
-                                </div>
-
-                                <div class="col-md-4 mb-12">
-                                    <label for="formFile" >File Surat</label><br/>
-                                    <small for="formFile" >Upload file surat yang telah dibuat</small>
-                                    <input name="file_surat" class="form-control" type="file" id="formFile">
-                                </div>
-                                <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
-                                </div>
+                                
                             </div>
                         </form>
                     </div>
